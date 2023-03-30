@@ -245,7 +245,7 @@ yellow open   shopping 3PBN3zyWRcqLhWjl5VaQ0A   1   1          0            0   
 }
 ```
 ### 2.3.3 分页查询
-> 参考2.3.2写法，加上from与size参数，from表示返回数据的第几页，size表示每页返回几个数据
+> 参考2.3.2写法，加上from与size参数，from表示数据行数，不是页数，size表示从该行开始返回几个数据
 ```json
 {
     "query":{
@@ -402,7 +402,7 @@ yellow open   shopping 3PBN3zyWRcqLhWjl5VaQ0A   1   1          0            0   
 }
 ```
 
-# HTTP各种请求写法参考
+# 各软件HTTP指令写法参考
 ## POST请求
 如下创建一个创建shopping的索引
 ### curl
