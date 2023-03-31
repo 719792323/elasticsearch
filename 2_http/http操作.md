@@ -1,5 +1,6 @@
 # 1.索引
-## 1.1 创建索引(POST)
+## 1.1 创建索引(PUT)
+* 指令url:es服务器地址/索引名称
 向es服务器发起一个put请求来创建索引，如果请求成果会返回一个json格式消息。
 shards_acknowledged的值表示是否响应成功，index表示创建的索引名称
 ```json
@@ -9,7 +10,25 @@ shards_acknowledged的值表示是否响应成功，index表示创建的索引�
     "index": "shopping"
 }
 ```
-* 指令url:es服务器地址/索引名称
+### 1.1.1 创建时指定索引分片和备份数
+在创建时加上如下body参数，下面参数表示了创建备份数为1，分片数为3
+```json
+{
+    "settings" : {
+        "number_of_shards" : 3,
+        "number_of_replicas" : 1
+    }
+}
+```
+### 1.1.2 创建后修改备份数
+创建后不能修改主分片数，但是可以修改副本数
+* 指令url:es服务器地址/索引名称/_settings
+```json
+{
+  "number_of_replicas" : 2
+}
+```
+
 ## 1.2 设置索引结构(POST)
 * url:es服务/索引名/_mapping
 > 假设创建好了一个名为user的索引，添加了name，sex，tel三个属性
